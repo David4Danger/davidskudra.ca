@@ -1,0 +1,138 @@
+<!DOCTYPE HTML>
+<html lang="en-CA">
+
+  <head>
+    <title> Riot API Demo Page 3</title>
+    
+    <!--Texts-->
+    <link href='http://fonts.googleapis.com/css?family=Maven+Pro:400,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300italic' rel='stylesheet' type='text/css'>
+    <!--Styles-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://s3.amazonaws.com/codecademy-content/courses/ltp/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/static/blogpost.css">
+  
+  <!--Metadata--> 
+  <meta name="keywords" content="david skudra, computer science, math, waterloo, student, canada, riot, league of legends, lol, api, programming, guide, demo">
+  <meta name="description" content="David Skudra's Personal Website">
+  
+  <!--Scripts-->
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  
+    ga('create', 'UA-66163034-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+  </head>
+  
+  <body>
+    <!--Nav Bar: Use for all tab pages-->
+    <div class="navigation">
+      <ul class="nav nav-pills">
+        <li><a href="/">home</a></li>
+        <li><a href="/blog">blog</a></li>
+        <li><a href="http://github.com/David4Danger">github</a></li>
+        <li><a href="/projects">projects</a></li>
+        <li><a href="/static/resume.pdf">resume</a></li>
+      </ul>
+    </div>
+    
+    <!--Static Information Until 2016-->
+    <div class="container">
+    <div class="row">
+      <div class="davpic">
+        <div class="col-md-3">
+          <a href="/"><img src="/static/davidface.png" alt=""></a>
+          <img src="/static/email.png" alt="No Email For Web Crawlers :D">
+        </div>
+      </div>
+      
+      <!--Full Blog Post-->
+      <div class="col-md-6">
+        <div class="fullpost">
+          <center>          
+          <div class="nav2">
+            <a href="/blog/Riot-API-Demo-2" class="arrow-prev"><i class="fa fa-arrow-left"></i></a>
+            <ul class="pg-ind">
+              <li class="pg"><a href="/blog/Riot-API-Demo-">1</a></li>
+              <li class="pg"><a href="/blog/Riot-API-Demo-2">2</a></li>
+              <li class="pg active-pg">3</li>
+              <li class="pg"><a href="/blog/Riot-API-Demo-4">4</a></li>
+              <li class="pg"><a href="/blog/Riot-API-Demo-5">5</a></li>
+            </ul>
+            <a href="/blog/Riot-API-Demo-4" class="arrow-next"><i class="fa fa-arrow-right"></i></a>
+          </div>
+          </center>
+          <h4 class="title">File 2 - RiotAPI.py</h4>
+          <div class="post-body">
+          <p>The second file we'll be looking at is the file called <b>RiotAPI.py</b>. This file is the real 'meat' of our application, where we create the class "RiotAPI". This is important as it serves two key purposes: Creating a general <i>_request</i> function using the request module we installed earlier, and creating any following functions that use this request function as needed. In the code below, you'll see our class has three defined functions. Once again I ask you take note of the comments as much as possible, and then we'll go into the code in more depth below.</p>
+          <br>          
+          <script src="https://gist.github.com/David4Danger/53c2a572cd0fe0f4988d.js"></script>
+          <br>
+          <p>The first thing you'll want to notice in he file is that we import two python modules: requests, and RiotConstants. Does the latter of the two sound familiar? Its the file we just made! We'll be importing RiotConstants and calling this module RC to make things easier; I'll also be referring to RiotConstants as RC from here on. As an added note, make sure you have all 3 of the files we're making today in the <b>same folder</b> so we can import them into eachother! The second module we are importing is the module we installed on page one, requests. This module will be helping us execute our requests to the Riot API with ease.<p>
+          <p>Now, we begin defining the ever-important class <b>RiotAPI</b>. We begin by creating our constructor, init. Aside from the given argument <i>self</i>, we'll be including two more arguments: <i>api_key</i> and <i>region</i>. For now just recall that we saved our API key from the Riot API website, but we won't be needing it until the final file. The other thing you should be noting from our constructor init is that we identify which region we want to use by calling for the 'REGIONS' dictionary in our RC module. This is where you modify which region you intend to use by entering in which of the keys from RC.REGIONS that you'd like to use. In this case I chose north_america but you can choose any key that is in your dictionary.</p>
+          <p>Our first function here is the "_request" function. This will serve the purpose of executing our request to the Riot API and returning the information that we get back. This time, we have the arguments of api_url and params. Take note that our params is predefined as an empty dictionary. We'll be using this to hold our API Key. In our first line, we define a new dictionary <i>entries</i> that will be holding our API keys. The important part here is that we are creating a for loop that is essentially saying "Is this key and value not in our dictionary entries? Then we add it in!"</p>
+          <p>Next we write the actual request to the Riot API. We start by defining the variable "reply", which is what Riot will be sending back to us when we execute our request (hence, their reply!) So now we use the request module with our request method being get, hence the '_requests.get' used. If you don't know what the request methods GET and POST are thats fine, just remember everything we're doing here will be GET requests. Now we'll be putting all of the URL information previously discussed in RC together in order to make the URL we desire.</p>
+          <p>As you can see, the first thing we do is format the 1st line in RC.URL, which was the base we use in all requests. We format proxy to be the region we stated in our init, region to be the region we stated in our init, and lastly url to be a variable called api_url. You'll recall this is the part of our request that <b>differs</b> depending on what our request is. The second argument requests.get uses is the dictionary we defined previously, entries. The last thing we do it create a return statement that gives us the reply that we recieve from Riot. We go more into depth on this in the 3rd file's description.</p>
+          <p>Almost done this file! We now have two short functions to define that we'll be using. The first function, 'get_summoner_by_name' consumes one argument, <i>sumname</i>. This argument is what consumes our summoner name in the 3rd file. The first line of this function defines the variable we discussed previously, api_url. It is defined at the value of RC.URL['summoner_by_name'], the second entry in our URL dictionary, which is then formatted as you'd expect. Version is formatted to be the constant we defined earlier, and names to be the argument entered in the function, <i>sumname</i>. We then end this function with a statement, returning the function _request that we just defined consuming the api_url variable we just created! Function one complete!</p>
+          <p>Our last function is defined as 'stats_by_summoner_summary', which also consumes one argument, <i>sumid</i>. This argument is what consumes the summonerid we'll be finding using the last function we just defined, 'get_summoner_by_name', but we'll worry about that later. For now we create this function assuming we know the summonerid we'll be using. So we once again format the variable api_url like we did with the last file, only using <i>summonerId</i> instead of <i>names</i>. We once again return the function _request that we had defined earlier consuming the api_url variable we had just created in this function.</p>
+          <p>Also, recall that on the last page I described how there were two requests that used a different format. This means you'll also have to define a different "request" function that can properly use this format. I've elected to not include this as it may be confusing to have multiple request functions right now. I'll likely upload a more complete version to my github repository for this project at a later time.</p>
+          <br>
+          <p>That's it for file 2! This file is the real bulk of the app so we're almost done. Before we move on to the short and simple file 3, time for a quick refresher<b>:</b></p>
+          <ul class="refresher">
+            <li>We started by importing the two modules we needed for this file, requests and RiotConstants as RC. Remember to have RiotAPI.py and RiotConstants.py in the same folder so this is possible!</li>
+            <li>We then began creating our RiotAPI class by defining our constructor (__init__).</li>
+            <li>Next we created our most important function, _request, which utilized the requests module we imported previously. This function is very important as it formats our 'base' half of the URL and then recieves the second half of our URL as a variable which is created in the wrapper functions we defined following this!</li>
+            <li>We finished by defining get_summoner_by_name and stats_by_summoner_summary to utilize our _request function as wrappers. Keep in mind that for every unique 2nd half of the URL you want to use (for <b>any</b> other type of Riot API request), you need to define another one of these wrappers with whatever arguments it needs to consume.</li>
+          </ul>
+          </div>
+          
+          <!--Bottom nav bar for pages of article-->
+          <center>          
+          <div class="nav2">
+            <a href="/blog/Riot-API-Demo-2" class="arrow-prev"><i class="fa fa-arrow-left"></i></a>
+            <ul class="pg-ind">
+              <li class="pg"><a href="/blog/Riot-API-Demo-">1</a></li>
+              <li class="pg"><a href="/blog/Riot-API-Demo-2">2</a></li>
+              <li class="pg active-pg">3</li>
+              <li class="pg"><a href="/blog/Riot-API-Demo-4">4</a></li>
+              <li class="pg"><a href="/blog/Riot-API-Demo-5">5</a></li>
+            </ul>
+            <a href="/blog/Riot-API-Demo-4" class="arrow-next"><i class="fa fa-arrow-right"></i></a>
+          </div>
+          </center>
+          
+          <div class="post-footer">
+            <!--Disqus comment script-->
+            <div id="disqus_thread"></div>
+            <script type="text/javascript">
+              /* * * CONFIGURATION VARIABLES * * */
+              // Required: on line below, replace text in quotes with your forum shortname
+              var disqus_shortname = 'riotapipost8';
+    
+              /* * * DON'T EDIT BELOW THIS LINE * * */
+              (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+              })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+          
+          </div>
+        </div>
+      </div>
+      <div class="watlogo">
+        <div class="col-md-3">
+          <a href="https://cs.uwaterloo.ca"><img src="/static/watlogo.png" alt=""></a>
+        </div>
+      </div>
+    </div>
+    </div>     
+  </body>
+</html>

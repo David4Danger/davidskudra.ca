@@ -1,0 +1,136 @@
+<!DOCTYPE HTML>
+<html lang="en-CA">
+
+  <head>
+    <title> Riot API Demo Page 2</title>
+    
+    <!--Texts-->
+    <link href='http://fonts.googleapis.com/css?family=Maven+Pro:400,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300italic' rel='stylesheet' type='text/css'>
+    <!--Styles-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://s3.amazonaws.com/codecademy-content/courses/ltp/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/static/blogpost.css">
+  
+  <!--Metadata--> 
+  <meta name="keywords" content="david skudra, computer science, math, waterloo, student, canada, riot, league of legends, lol, api, programming, guide, demo">
+  <meta name="description" content="David Skudra's Personal Website">
+  
+  <!--Scripts-->
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  
+    ga('create', 'UA-66163034-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+  </head>
+  
+  <body>
+    <!--Nav Bar: Use for all tab pages-->
+    <div class="navigation">
+      <ul class="nav nav-pills">
+        <li><a href="/">home</a></li>
+        <li><a href="/blog">blog</a></li>
+        <li><a href="http://github.com/David4Danger">github</a></li>
+        <li><a href="/projects">projects</a></li>
+        <li><a href="/static/resume.pdf">resume</a></li>
+      </ul>
+    </div>
+    
+    <!--Static Information Until 2016-->
+    <div class="container">
+    <div class="row">
+      <div class="davpic">
+        <div class="col-md-3">
+          <a href="/"><img src="/static/davidface.png" alt=""></a>
+          <img src="/static/email.png" alt="No Email For Web Crawlers :D">
+        </div>
+      </div>
+      
+      <!--Full Blog Post-->
+      <div class="col-md-6">
+        <div class="fullpost">
+          <center>          
+          <div class="nav2">
+            <a href="/blog/Riot-API-Demo" class="arrow-prev"><i class="fa fa-arrow-left"></i></a>
+            <ul class="pg-ind">
+              <li class="pg"><a href="/blog/Riot-API-Demo">1</a></li>
+              <li class="pg active-pg">2</li>
+              <li class="pg"><a href="/blog/Riot-API-Demo-3">3</a></li>
+              <li class="pg"><a href="/blog/Riot-API-Demo-4">4</a></li>
+              <li class="pg"><a href="/blog/Riot-API-Demo-5">5</a></li>
+            </ul>
+            <a href="/blog/Riot-API-Demo-3" class="arrow-next"><i class="fa fa-arrow-right"></i></a>
+          </div>
+          </center>
+          <h4 class="title">File 1 - RiotConstants.py</h4>
+          <div class="post-body">
+          <p>The first file we'll be looking at is the file called <b>RiotConstants.py</b>. This file will be holding all the constants that we use to execute a request with the Riot API. The file has three constants that each contain a dictionary; the first dictionary is the most important as it is the <i>unformatted</i> url we make requests with. The following two dictionaries are made up of keys and values that are used to help format the first dictionary. Take note of the comments in the code below, and then I'll be going into more depth about the code itself once you've seen it.</p>
+          <br>
+          <script src="https://gist.github.com/David4Danger/2953d2fc741469a51e6b.js"></script>
+          <br>
+          <p>As described above, this file has three constants that are composed of dictionaries. First off, we can see that the 'URL' dictionary is composed of 3 keys: <i>base</i>, <i>summoner_by_name</i>, and <i>stats_by_summoner summary</i>. The first of the three represents the base URL that is used in most requests sent to the Riot API. Take note that it has three variables inside the string that we are formatting: proxy, region, and url. The first two variables are going to be formatted to be one of the values in the 'REGIONS' dictionary. The last variable, <i>url</i>, is formatted to be one of those two remaining values in the URL dictionary. This will all be done in the next file we work on.</p>
+          <p>This takes us into the next two keys of URL. The second key, <i>summoner_by_name</i>, gives us another value that requires formatting. This string will be formatted with 2 variables: version and names. Version will be formatted with a value from the next dictionary, 'API_VERSIONS', while names will be a summoner name we enter in the next file we look at, on page 3.</p>
+          <p>The second constant in RiotConstants, 'API_VERSIONS', is a simple one. As found on the Riot API full reference, each request has a current API version. It isn't updated too often so expect that once you fill this dictionary in, you won't have to change the value of any keys you've already put in this dictionary. As mentioned before, 'API_VERSIONS' is used to format the previous dictionary we described, 'URL'.</p>
+          <p>The final constant in RiotConstants is 'REGIONS'. We mentioned this constant before as it is used to format the value of <i>base</i> in the URL dictionary. This constant is the most static of the three, as once you enter information you will never need to update it. This dictionary is composed of the regions you want to use, and their matching acronyms. This information can all be found on the Riot API full reference, but if you're only looking to use the main 3 regions you are fine just copying my code from here.</p>
+          <p>As a short footnote, earlier I pointed out that the base url in the URL dictionary is used in <i>most</i> requests, but not all of them. There are two requests you'll find on the full api reference called "current-game" and "featured-games", those use a different base URL that I'm not covering in this demo. If you understand what I've done on this page and want to utilize those requests, coming up with the proper "base2" constant is pretty easy, consider it an exercise.</p>
+          <br>
+          <p>So we've now defined all the constants we need to work with in our application and have a good understanding of how they work. A quick refresher before we move on to the second file<b>:</b></p>
+          <ul class="refresher">
+            <li>The 'URL' dictionary is fairly static and doesn't require much upkeep. There is almost 100 API requests you can make and I've only included 2, so check out the full reference and add some more requests!</li>
+            <li>The 'API_VERSIONS' dictionary requires a bit of maitenance just to make sure you're using the latest version of each API. Just keep an eye on the versions being used on the full reference, and update the values as needed.</li>
+            <li>The 'REGIONS' dictionary is as static as it gets. There is about a dozen different regions you can put in this dictionary, but which you put in there us up to you.</li>
+            <li>If you end up making a web application, make sure you include all the possible regions in the 'REGIONS' dictionary. You could have your largest target audience in the NA region, but it is easy and thoughtful to include all the possible regions.</li>
+          </ul>
+           
+          </div>
+          
+          <!--Bottom nav bar for pages of article-->
+          <center>          
+          <div class="nav2">
+            <a href="/blog/Riot-API-Demo" class="arrow-prev"><i class="fa fa-arrow-left"></i></a>
+            <ul class="pg-ind">
+              <li class="pg"><a href="/blog/Riot-API-Demo">1</a></li>
+              <li class="pg active-pg">2</li>
+              <li class="pg"><a href="/blog/Riot-API-Demo-3">3</a></li>
+              <li class="pg"><a href="/blog/Riot-API-Demo-4">4</a></li>
+              <li class="pg"><a href="/blog/Riot-API-Demo-5">5</a></li>
+            </ul>
+            <a href="/blog/Riot-API-Demo-3" class="arrow-next"><i class="fa fa-arrow-right"></i></a>
+          </div>
+          </center>
+          
+          <div class="post-footer">
+            <!--Disqus comment script-->
+            <div id="disqus_thread"></div>
+            <script type="text/javascript">
+              /* * * CONFIGURATION VARIABLES * * */
+              // Required: on line below, replace text in quotes with your forum shortname
+              var disqus_shortname = 'riotapipost8';
+    
+              /* * * DON'T EDIT BELOW THIS LINE * * */
+              (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+              })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+          
+          </div>
+        </div>
+      </div>
+      <div class="watlogo">
+        <div class="col-md-3">
+          <a href="https://cs.uwaterloo.ca"><img src="/static/watlogo.png" alt=""></a>
+        </div>
+      </div>
+    </div>
+    </div>     
+  </body>
+</html>

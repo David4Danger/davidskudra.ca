@@ -1,0 +1,126 @@
+<!DOCTYPE HTML>
+<html lang="en-CA">
+
+  <head>
+    <title> Riot API Demo Page 5 </title>
+    
+    <!--Texts-->
+    <link href='http://fonts.googleapis.com/css?family=Maven+Pro:400,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300italic' rel='stylesheet' type='text/css'>
+    <!--Styles-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://s3.amazonaws.com/codecademy-content/courses/ltp/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/static/blogpost.css">
+  
+  <!--Metadata--> 
+  <meta name="keywords" content="david skudra, computer science, math, waterloo, student, canada, riot, league of legends, lol, api, programming, guide, demo">
+  <meta name="description" content="David Skudra's Personal Website">
+  
+  <!--Scripts-->
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  
+    ga('create', 'UA-66163034-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+  </head>
+  
+  <body>
+    <!--Nav Bar: Use for all tab pages-->
+    <div class="navigation">
+      <ul class="nav nav-pills">
+        <li><a href="/">home</a></li>
+        <li><a href="/blog">blog</a></li>
+        <li><a href="http://github.com/David4Danger">github</a></li>
+        <li><a href="/projects">projects</a></li>
+        <li><a href="/static/resume.pdf">resume</a></li>
+      </ul>
+    </div>
+    
+    <!--Static Information Until 2016-->
+    <div class="container">
+    <div class="row">
+      <div class="davpic">
+        <div class="col-md-3">
+          <a href="/"><img src="/static/davidface.png" alt=""></a>
+          <img src="/static/email.png" alt="No Email For Web Crawlers :D">
+        </div>
+      </div>
+      
+      <!--Full Blog Post-->
+      <div class="col-md-6">
+        <div class="fullpost">
+          <center>          
+          <div class="nav2">
+            <a href="/blog/Riot-API-Demo-4" class="arrow-prev"><i class="fa fa-arrow-left"></i></a>
+            <ul class="pg-ind">
+              <li class="pg"><a href="/blog/Riot-API-Demo">1</a></li>
+              <li class="pg"><a href="/blog/Riot-API-Demo-2">2</a></li>
+              <li class="pg"><a href="/blog/Riot-API-Demo-3">3</a></li>
+              <li class="pg"><a href="/blog/Riot-API-Demo-4">4</a></li>
+              <li class="pg active-pg">5</li>
+            </ul>
+            <a href="/blog/Riot-API-Demo" class="arrow-next"><i class="fa fa-arrow-right"></i></a>
+          </div>
+          </center>
+          <h4 class="title">Demo Wrap Up</h4>
+          <div class="post-body">
+          <p>So we've now finished the Riot API demo! If you followed everything closely (or just copied and pasted my code, which is fine), then you should now have a working application that uses the Riot API! From here you can add more constants to RiotConstants.py to expand what APIs and regions you use, add wrapper functions to RiotAPI.py to request more information from the Riot API, and add more reply variables to Main.py to manipulate the data you want even further. As promised, below is the code for the Main.py file that is cleaned up a bit more, including only one print statement that shows your final result: The win/loss ratio of any summoner name you enter!</p>
+          <br>
+          <script src="https://gist.github.com/David4Danger/f5cef58ea056eb5a94fd.js"></script>
+          </br>
+          <p>I hope this demo helped build a foundation for you to manipulate the Riot API however you'd like. The amount of raw information you can get using the Riot API is astounding, so let the creative juices flow! Don't stop at just finding a number or two, just keep building and building to try and build something big out of all this information. I'm personally in the midst of making my own personal project which involves most of this demo being used as its foundation. You can learn more about this project by checking out my <a href="/projects">projects page</a> in the near future. All the code used in this demo is available on my <a href="http://github.com/David4Danger">github page</a>. I'll likely update some of the files with further code (more work in the constants file, and their respective functions defined in RiotAPI) once my project is finished, so keep an eye out for that as well.</p>
+          <br>
+          <p>If anything in this demo was unclear, I'd be happy to clarify any part of the process displayed. Just leave me a comment below or contact me by email and I'll be happy to help.</p>
+          <center><h4>Thanks for reading, and enjoy!</h4></center>
+          </div>
+          
+          <!--Bottom nav bar for pages of article-->
+          <center>          
+          <div class="nav2">
+            <a href="/blog/Riot-API-Demo-4" class="arrow-prev"><i class="fa fa-arrow-left"></i></a>
+            <ul class="pg-ind">
+              <li class="pg"><a href="/blog/Riot-API-Demo">1</a></li>
+              <li class="pg"><a href="/blog/Riot-API-Demo-2">2</a></li>
+              <li class="pg"><a href="/blog/Riot-API-Demo-3">3</a></li>
+              <li class="pg"><a href="/blog/Riot-API-Demo-4">4</a></li>
+              <li class="pg active-pg">5</li>
+            </ul>
+            <a href="/blog/Riot-API-Demo" class="arrow-next"><i class="fa fa-arrow-right"></i></a>
+          </div>
+          </center>
+          
+          <div class="post-footer">
+            <!--Disqus comment script-->
+            <div id="disqus_thread"></div>
+            <script type="text/javascript">
+              /* * * CONFIGURATION VARIABLES * * */
+              // Required: on line below, replace text in quotes with your forum shortname
+              var disqus_shortname = 'riotapipost8';
+    
+              /* * * DON'T EDIT BELOW THIS LINE * * */
+              (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+              })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+          
+          </div>
+        </div>
+      </div>
+      <div class="watlogo">
+        <div class="col-md-3">
+          <a href="https://cs.uwaterloo.ca"><img src="/static/watlogo.png" alt=""></a>
+        </div>
+      </div>
+    </div>
+    </div>     
+  </body>
+</html>

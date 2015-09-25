@@ -1,0 +1,133 @@
+<!DOCTYPE HTML>
+<html lang="en-CA">
+
+  <head>
+    <title> Riot API Challenge 2.0 </title>
+    
+    <!--Texts-->
+    <link href='http://fonts.googleapis.com/css?family=Maven+Pro:400,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300italic' rel='stylesheet' type='text/css'>
+    <!--Styles-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://s3.amazonaws.com/codecademy-content/courses/ltp/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/static/blogpost.css">
+  
+  <!--Metadata--> 
+  <meta name="keywords" content="david skudra, computer science, math, waterloo, student, canada, riot, league of legends, lol, api, programming, guide, demo, 2.0, challenge">
+  <meta name="description" content="David Skudra's Personal Website">
+  
+  <!--Scripts-->
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  
+    ga('create', 'UA-66163034-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+  </head>
+  
+  <body>
+    <!--Nav Bar: Use for all tab pages-->
+    <div class="navigation">
+      <ul class="nav nav-pills">
+        <li><a href="/">home</a></li>
+        <li><a href="/blog">blog</a></li>
+        <li><a href="http://github.com/David4Danger">github</a></li>
+        <li><a href="/projects">projects</a></li>
+        <li><a href="/static/resume.pdf">resume</a></li>
+      </ul>
+    </div>
+    
+    <!--Static Information Until 2016-->
+    <div class="container">
+    <div class="row">
+      <div class="davpic">
+        <div class="col-md-3">
+          <a href="/"><img src="/static/davidface.png" alt=""></a>
+          <img src="/static/email.png" alt="No Email For Web Crawlers :D">
+        </div>
+      </div>
+      
+      <!--Full Blog Post-->
+      <div class="col-md-6">
+        <div class="fullpost">
+          <center>          
+          <div class="nav2">
+            <a href="/blog/Riot-API-Challenge-2.0" class="arrow-prev"><i class="fa fa-arrow-left"></i></a>
+            <ul class="pg-ind">
+              <li class="pg"><a href="/blog/Riot-API-Challenge-2.0">1</a></li>
+              <li class="pg active-pg">2</li>
+              <li class="pg"><a href="/blog/Riot-API-Challenge-2.0-3">3</a></li>
+              <li class="pg"><a href="/blog/Riot-API-Challenge-2.0-4">4</a></li>
+            </ul>
+            <a href="/blog/Riot-API-Challenge-2.0-3" class="arrow-next"><i class="fa fa-arrow-right"></i></a>
+          </div>
+          </center>
+          <h1 class="title">Riot API Challenge 2.0 - Project Documentation Part 2</h1>
+          <h3 class="date">Posted on 8/21/2015</h3>
+          <div class="post-body">
+          <p>As of my last post, the bulk of my time on this project has been dedicated to gathering and analyzing the data supplied for this contest. The process was certainly not as easy and quick as I had imagined! I had a couple issues with the 400,000 requests I had to make to the Riot API, the first of which being my own fault.</p>
+          <p>Seen on their <a href="https://developer.riotgames.com/docs/rate-limiting">rate limiting page</a>, Riot gives a full explanation of how the requests made to their servers are managed. While I did recieve a production API key, the Riot servers also have their own rate limiting in order to protect the integrity of their servers - that means that sometimes your request would get bounced with a 429 error when needed. I didn't realize this at first and probably spent a good afternoon trying to figure out what the issue was, whoops! My solution for this issue was to add a while loop that would keep trying each request made until it worked and didn't return an exception. Here is an example of my modified code.</p>
+          <br>
+          <script src="https://gist.github.com/David4Danger/26d0f8191b79166e2753.js"></script>
+          <br>
+          <p>Now this brings up the notion of speed: If my code has to go through that while loop all the time, doesn't that mean it'll take a lot longer to process all the requests? The answer to that is undoubtedly yes! I ran various different regions simultaneously in different shells and it was very clear that some servers were bouncing a lot more requests. I found the fastest and most responsive servers were NA, LAS, LAN, and OCE. On the other end of the spectrum, the KR servers were by far the least responsive, with EUW and RU coming up close behind.</p>
+          <p>Another important part about the data acquisition process was how many instances of Python I could be running simultaneously. Obviously saving all the executed requests into dictionaries and only dumping the information to a local json file took up quite a bit of memory. Now I remember back when I first built my PC, all my friends told me 'David, 16GB of RAM is excessive! You'll never need that much!' Today I get the last laugh, because I utilized every last GB of my memory with all those python instances running.</p>
+          <p>So once I had locally stored all 400,000 dictionaries, the data analysis began. I created functions to process each dictionary and export the results to the appropriate excel files. I don't want to spoil the content of my website, but here is what some of my functions achieved for me:</p>
+          <ul>
+            <li>A function that recorded the total popularity of each altered AP item</li>
+            <li>A function that recorded the winrate of each altered AP item</li>
+            <li>A function that recorded the average game length of any match that included an AP item from the altered set</li>
+            <li>A function that recorded how often a specific item was built on a specific champion</li>
+          </ul>
+          <p>Keep in mind that each of the functions was applied to all ten regions, in two different queues, and two different patches. As you can imagine, this provided me with an abundancy of information to analyze. As of now I've all but finished going through the data and have it prepared for my website.</p>
+          <br>
+          <p>The Riot API Challenge deadline is on the 31st, so as of now I have ten days to complete my website with all the information I have prepared. I expect to finish before then but I might take longer as my image of the website changes, (which I know it will!)</p>
+          <p>Thanks for reading and expect the next entry when the website is nearly complete!</p>
+          </div>
+          
+          <!--Bottom nav bar for pages of article-->
+          <center>          
+          <div class="nav2">
+            <a href="/blog/Riot-API-Challenge-2.0" class="arrow-prev"><i class="fa fa-arrow-left"></i></a>
+            <ul class="pg-ind">
+              <li class="pg"><a href="/blog/Riot-API-Challenge-2.0">1</a></li>
+              <li class="pg active-pg">2</li>
+              <li class="pg"><a href="/blog/Riot-API-Challenge-2.0-3">3</a></li>
+              <li class="pg"><a href="/blog/Riot-API-Challenge-2.0-4">4</a></li>
+            </ul>
+            <a href="/blog/Riot-API-Challenge-2.0-3" class="arrow-next"><i class="fa fa-arrow-right"></i></a>
+          </div>
+          </center>
+          
+          <div class="post-footer">
+            <!--Disqus comment script-->
+            <div id="disqus_thread"></div>
+            <script type="text/javascript">
+              /* * * CONFIGURATION VARIABLES * * */
+              var disqus_shortname = 'riotapichallenge20';
+    
+              /* * * DON'T EDIT BELOW THIS LINE * * */
+              (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+              })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+          </div>
+        </div>
+      </div>
+      <div class="watlogo">
+        <div class="col-md-3">
+          <a href="https://cs.uwaterloo.ca"><img src="/static/watlogo.png" alt=""></a>
+        </div>
+      </div>
+    </div>
+    </div>     
+  </body>
+</html>

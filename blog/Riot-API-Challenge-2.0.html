@@ -1,0 +1,126 @@
+<!DOCTYPE HTML>
+<html lang="en-CA">
+
+  <head>
+    <title> Riot API Challenge 2.0 </title>
+    
+    <!--Texts-->
+    <link href='http://fonts.googleapis.com/css?family=Maven+Pro:400,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300italic' rel='stylesheet' type='text/css'>
+    <!--Styles-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://s3.amazonaws.com/codecademy-content/courses/ltp/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/static/blogpost.css">
+  
+  <!--Metadata--> 
+  <meta name="keywords" content="david skudra, computer science, math, waterloo, student, canada, riot, league of legends, lol, api, programming, guide, demo, 2.0, challenge">
+  <meta name="description" content="David Skudra's Personal Website">
+  
+  <!--Scripts-->
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  
+    ga('create', 'UA-66163034-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+  </head>
+  
+  <body>
+    <!--Nav Bar: Use for all tab pages-->
+    <div class="navigation">
+      <ul class="nav nav-pills">
+        <li><a href="/">home</a></li>
+        <li><a href="/blog">blog</a></li>
+        <li><a href="http://github.com/David4Danger">github</a></li>
+        <li><a href="/projects">projects</a></li>
+        <li><a href="/static/resume.pdf">resume</a></li>
+      </ul>
+    </div>
+    
+    <!--Static Information Until 2016-->
+    <div class="container">
+    <div class="row">
+      <div class="davpic">
+        <div class="col-md-3">
+          <a href="/"><img src="/static/davidface.png" alt=""></a>
+          <img src="/static/email.png" alt="No Email For Web Crawlers :D">
+        </div>
+      </div>
+      
+      <!--Full Blog Post-->
+      <div class="col-md-6">
+        <div class="fullpost">
+          <center>          
+          <div class="nav2">
+            <a href="/blog/Riot-API-Challenge-2.0-4" class="arrow-prev"><i class="fa fa-arrow-left"></i></a>
+            <ul class="pg-ind">
+              <li class="pg active-pg">1</li>
+              <li class="pg"><a href="/blog/Riot-API-Challenge-2.0-2">2</a></li>
+              <li class="pg"><a href="/blog/Riot-API-Challenge-2.0-3">3</a></li>
+              <li class="pg"><a href="/blog/Riot-API-Challenge-2.0-4">4</a></li>
+            </ul>
+            <a href="/blog/Riot-API-Challenge-2.0-2" class="arrow-next"><i class="fa fa-arrow-right"></i></a>
+          </div>
+          </center>
+          <h1 class="title">Riot API Challenge 2.0 - Project Documentation</h1>
+          <h3 class="date">Posted on 8/14/2015</h3>
+          <div class="post-body">
+          <p>In this post I'll be discussing my progress on my entry into the Riot API Challenge 2.0 - you can find more information about it <a href="https://developer.riotgames.com/discussion/announcements/show/2lxEyIcE">here</a>. The first thing to notice that is different from this challenge and the last is that there are multiple categories to enter. I've opted for category #2, here is the challenge statement:</p>
+          <p><i>Given two data sets of match IDs, one before the AP Item changes and another one after, create a piece of software to demonstrate changes in AP Item usage. You can download the data set <a href="https://s3-us-west-1.amazonaws.com/riot-api/api_challenge/AP_ITEM_DATASET.zip">here</a>.</i></p>
+          <p>The data set that was to be downloaded contains forty .json files, each containing a list of 10,000 unique gameids to be analyzed for this project. The gameid variable is very similar to the summonerid that was discussed <a href="/blog/Riot-API-Demo">in my Riot API Demo blogpost</a>. The forty files were sorted into four categories: Patch 5.11 normal queue, patch 5.11 ranked solo queue, patch 5.14 normal queue, and patch 5.14 ranked queue. This variety provided by Riot is useful because you can draw conclusions much easier with pre-sorted data. On top of this, each of those four categories contains ten of the forty .json files, where each file is one of the ten regions that games are played on. As a lot of League of Legends players know, regional differences can be <i>huge</i> at the start of a new patch, (looking at you, Korea.)</p>
+          <p>So as you can see there is a large amount of data to be broken down and analyzed. I'll be looking to my favourite language, Python, to help me get at the information I'll be looking for. As of now I'm still waiting on Riot to get an API Key that can handle all 400,000 gameid requests I'll be making, but I have the files ready to go to process everything I need. Here is an example of one of the four dictionary creating files I have prepared, this one being for all the ranked matches on patch 5.14.</p>
+          <br>
+          <script src="https://gist.github.com/David4Danger/1e69e82d13f75ca7c680.js"></script>
+          <br>
+          <p>As seen in the above file, I start by parsing the .json files that correspond to patch 5.14 ranked games. Afterwards I define ten dictionaries to be used to hold 10,000 executed gameid requests each, using the parsed data from the .json files. I then have my main method execute 10 for loops to process these 10,000 requests using a slightly modified version of my RiotAPI.py file from my previous blogpost. The modified version no longer has the "region" variable predefined, but instead requires region as an argument just like summonerid or gameid. Once the total 100,000 requests have been executed and stored in their appropriate dictionaries, I put the newly created dictionaries in their appropriate .json files for later use. This way, I have all the information I need stored locally instead of having to run the program multiple times. This is good for not only my purposes but also for Riot, saving their servers the trouble of processing 400,000 requests multiple times. As an added note, the for loops are processed such that each gameid is entered as a new dictionary key (which is convenient since they are all unique), while the executed request, which is a dictionary that is returned to us, is entered as the corresponding dictionary value.</p>
+          <br>
+          <p>The Riot API Challenge 2.0 has a contest closing date of August the 31st, so once I obtain a API Production Key from Riot to use, I'll be working hard to get a web application going that utilizes the conclusions I draw from the data obtained. I'll be discussing the website in full in my next entry in this blogpost. I'm going to keep each entry in this single blogpost and I'll simply be adding them as a following page each time instead of creating a new post, for organizational purposes.</p>
+          <p>Expect page 2 to be up once I've finished analyzing the data provided and have drawn some conclusions to be used in my webapplication. Look forward to it!</p>
+          </div>
+          
+          <!--Bottom nav bar for pages of article-->
+          <center>          
+          <div class="nav2">
+            <a href="/blog/Riot-API-Challenge-2.0-4" class="arrow-prev"><i class="fa fa-arrow-left"></i></a>
+            <ul class="pg-ind">
+              <li class="pg active-pg">1</li>
+              <li class="pg"><a href="/blog/Riot-API-Challenge-2.0-2">2</a></li>
+              <li class="pg"><a href="/blog/Riot-API-Challenge-2.0-3">3</a></li>
+              <li class="pg"><a href="/blog/Riot-API-Challenge-2.0-4">4</a></li>
+            </ul>
+            <a href="/blog/Riot-API-Challenge-2.0-2" class="arrow-next"><i class="fa fa-arrow-right"></i></a>
+          </div>
+          </center>
+          
+          <div class="post-footer">
+            <!--Disqus comment script-->
+            <div id="disqus_thread"></div>
+            <script type="text/javascript">
+              /* * * CONFIGURATION VARIABLES * * */
+              var disqus_shortname = 'riotapichallenge20';
+    
+              /* * * DON'T EDIT BELOW THIS LINE * * */
+              (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+              })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+          </div>
+        </div>
+      </div>
+      <div class="watlogo">
+        <div class="col-md-3">
+          <a href="https://cs.uwaterloo.ca"><img src="/static/watlogo.png" alt=""></a>
+        </div>
+      </div>
+    </div>
+    </div>     
+  </body>
+</html>

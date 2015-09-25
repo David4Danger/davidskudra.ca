@@ -1,0 +1,139 @@
+<!DOCTYPE HTML>
+<html lang="en-CA">
+
+  <head>
+    <title> Riot API Demo Page 4</title>
+    
+    <!--Texts-->
+    <link href='http://fonts.googleapis.com/css?family=Maven+Pro:400,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300italic' rel='stylesheet' type='text/css'>
+    <!--Styles-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://s3.amazonaws.com/codecademy-content/courses/ltp/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/static/blogpost.css">
+  
+  <!--Metadata--> 
+  <meta name="keywords" content="david skudra, computer science, math, waterloo, student, canada, riot, league of legends, lol, api, programming, guide, demo">
+  <meta name="description" content="David Skudra's Personal Website">
+  
+  <!--Scripts-->
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  
+    ga('create', 'UA-66163034-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+  </head>
+  
+  <body>
+    <!--Nav Bar: Use for all tab pages-->
+    <div class="navigation">
+      <ul class="nav nav-pills">
+        <li><a href="/">home</a></li>
+        <li><a href="/blog">blog</a></li>
+        <li><a href="http://github.com/David4Danger">github</a></li>
+        <li><a href="/projects">projects</a></li>
+        <li><a href="/static/resume.pdf">resume</a></li>
+      </ul>
+    </div>
+    
+    <!--Static Information Until 2016-->
+    <div class="container">
+    <div class="row">
+      <div class="davpic">
+        <div class="col-md-3">
+          <a href="/"><img src="/static/davidface.png" alt=""></a>
+          <img src="/static/email.png" alt="No Email For Web Crawlers :D">
+        </div>
+      </div>
+      
+      <!--Full Blog Post-->
+      <div class="col-md-6">
+        <div class="fullpost">
+          <center>          
+          <div class="nav2">
+            <a href="/blog/Riot-API-Demo-3" class="arrow-prev"><i class="fa fa-arrow-left"></i></a>
+            <ul class="pg-ind">
+              <li class="pg"><a href="/blog/Riot-API-Demo">1</a></li>
+              <li class="pg"><a href="/blog/Riot-API-Demo-2">2</a></li>
+              <li class="pg"><a href="/blog/Riot-API-Demo-3">3</a></li>
+              <li class="pg active-pg">4</li>
+              <li class="pg"><a href="/blog/Riot-API-Demo-5">5</a></li>
+            </ul>
+            <a href="/blog/Riot-API-Demo-5" class="arrow-next"><i class="fa fa-arrow-right"></i></a>
+          </div>
+          </center>
+          <h4 class="title">File 3 - Main.py</h4>
+          <div class="post-body">
+          <p>The final file we'll be looking at is the file called <b>Main.py</b>. This file is going to tie everything we've done together by actually utilizing our class <b>RiotAPI</b>, this time using the actual arguments that I alluded to using later. That means we'll need the API key we saved from earlier, a summoner name to run our first wrapper request with, and a summonerID to run our second wrapper request with. The real trick here is that we're going to execute our first wrapper request in 'get_summoner_by_name', manipulate the reply we get from the Riot API to get a summonerID, and then we'll use that ID in our second wrapper function, 'stats_by_summoner_summary'.</p>
+          <p>I include a lot of unnecessary print statements in this file just to help follow the process of what we're doing, so I'd recommend copying this file and running it just to see exactly what each print statement returns. On the last page of this demo I'll post a nice a clean file with no unnecessary statements. I'll go into detail one final time below the following code to explain what we're looking at.</p>
+          <br>
+          <script src="https://gist.github.com/David4Danger/d7af5aa5ba9d59e36bb7.js"></script>
+          <br>
+          <p>The first thing you'll notice is that like we did in our last file, we're going to import the previous file into our current file as a module. That means we start with the import statement that will allow us to use RiotAPI.py as  module. The next thing we'll want to do is write our main. This method will be manipulating all the functions we defined in the RiotAPI class from the last module.</p>
+          <p>We'll start with line 3, where we define a new variable called api. You'll see that this variable is set to be equal to the RiotAPI Class we defined in our last module, where it has our API key as it's argument. You never want to share your API key with anyone so you'll notice I instead wrote 'YOUR API KEY HERE!' as the argument. So just take the API key we saved at the beggining of this project and paste it in the brackets as a string. Our RiotAPI class now has an API key to work with!</p>
+          <p>The next variable we define is res, short for result. This variable is set to be equal to the response we get from the RiotAPI when we run the function 'get_summoner_by_name('YOUR SUMMONER NAME HERE')'. Take note that the file I've posted above <i>includes</i> my summoner name, incase whoever is reading this doesn't have a League of Legends account to play on. If you do however have your own account, this is the part where you should fill in your own summoner name.</p>
+          <p>Now you'll see I included two print statements to help clarify what exactly the variable res is once we run this file. If we check what the type of res is, you'll see it is a type 'dict' that is printed, as expected! Then the next line we actually print res, and we'll have the full dictionary reply printed for us!</p>
+          <p>This is an important part of this demo because you'll notice that we've completely set up a system that allows us to enter some arguments, (Region in RiotAPI, API Key in Main, and a summoner name in Main). But instead of stopping here, we're going to do what we set out to do: Manipulate the information that the API has sent back to us! To do this, we start by creating a new variable "ID". Since we know the structure of the dictionary 'res' from both printing it and looking at the API reference website, we can easily manipulate the dictionary to get the value we want from it, 'id'. So we enter in the two keys needed, 'streetjustlce' and 'id', which returns the value of 'id'. In my case this returns the number <i>31976199</i>, so we now have a variable 'ID' which is equal to the summonerid we've obtained.</p>
+          <p>Next, we'll be creating one last variable which is res2, short for result two. You might remember from our last page that the last function we defined, 'stat_by_summoner_summary' consumed one argument: A summonerid. Now we can use the variable 'ID' that we defined on line 7 to run this function! So once again we call the function using the api variable we defined previously, which uses the RiotAPI class itself. Now res2 will be equal to the reply we recieve from the Riot API!</p>
+          <p>Just to make sure we've done everything correctly, I included another print statement that tells us what the type of res2 is. As expected, it is a dictionary, making it very easy to manipulate for information. The next line has a print statement that I commented out, because as you'll see on the Riot API page, this dictionary is <b>huge</b> because of how much information it holds. If you'd like to see just how big it is, uncomment that line and watch at your python shell explodes.</p>
+          <p>So now we've got res2 defined and we know exactly what this dictionary includes. We once again do some manipulation to pull the information we want, since we know the exact structure of the dictionary. So in line 13, I manipulate res2 twice; once to produce how many ranked solo wins I have, and how many ranked solo losses I have. Dividing one by the other produces my ranked solo win ratio! We can then print this statement and as expect, it produces a number that corresponds to my ranked win ratio. In my case (as of writing this demo), this number is 1.125 because I have 45 wins and 40 losses.</p>
+          <p>Before we finish up, there is one last thing to write in this file that you may have noticed. When using the Main method, you must include this last "if" statement to properly run the file. You don't really need to understand it to use it but to put it in simple terms: This allows our "Main.py" file to be executed independently.</p>
+          <p>So we're now finished all 3/3 files for our Riot API Demo! Before  I wrap this up on page 5, here is a quick refresher:</p>
+          <ul class="refresher">
+            <li>Remember to add your unique API key into this file, otherwise it will <b>not</b> work.</li>
+            <li>You can use any summoner name you want (that actually exists on the server you indicated in RiotAPI.py), but if you just want to see how this works you're fine to leave my summoner name in the res variable.</li>
+            <li>You <i>don't</i> have to write all of these print statements like I have. Think of it as a way to check your work as you go, just to be sure everything up until the point you're at has gone smoothly. I'm sure we've all done some super long problem before and realized somewhere in the middle a digit was missed; this is a similar idea. Always check your work!</li>
+            <li>Don't forget to include the last if statement to make sure your Main file can run independently.</li>
+          </ul>
+          </div>
+          
+          <!--Bottom nav bar for pages of article-->
+          <center>          
+          <div class="nav2">
+            <a href="/blog/Riot-API-Demo-3" class="arrow-prev"><i class="fa fa-arrow-left"></i></a>
+            <ul class="pg-ind">
+              <li class="pg"><a href="/blog/Riot-API-Demo">1</a></li>
+              <li class="pg"><a href="/blog/Riot-API-Demo-2">2</a></li>
+              <li class="pg"><a href="/blog/Riot-API-Demo-3">3</a></li>
+              <li class="pg active-pg">4</li>
+              <li class="pg"><a href="/blog/Riot-API-Demo-5">5</a></li>
+            </ul>
+            <a href="/blog/Riot-API-Demo-5" class="arrow-next"><i class="fa fa-arrow-right"></i></a>
+          </div>
+          </center>
+          
+          <div class="post-footer">
+            <!--Disqus comment script-->
+            <div id="disqus_thread"></div>
+            <script type="text/javascript">
+              /* * * CONFIGURATION VARIABLES * * */
+              // Required: on line below, replace text in quotes with your forum shortname
+              var disqus_shortname = 'riotapipost8';
+    
+              /* * * DON'T EDIT BELOW THIS LINE * * */
+              (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+              })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+          
+          </div>
+        </div>
+      </div>
+      <div class="watlogo">
+        <div class="col-md-3">
+          <a href="https://cs.uwaterloo.ca"><img src="/static/watlogo.png" alt=""></a>
+        </div>
+      </div>
+    </div>
+    </div>     
+  </body>
+</html>

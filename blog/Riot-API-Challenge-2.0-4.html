@@ -1,0 +1,128 @@
+<!DOCTYPE HTML>
+<html lang="en-CA">
+
+  <head>
+    <title> Riot API Challenge 2.0 </title>
+    
+    <!--Texts-->
+    <link href='http://fonts.googleapis.com/css?family=Maven+Pro:400,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300italic' rel='stylesheet' type='text/css'>
+    <!--Styles-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://s3.amazonaws.com/codecademy-content/courses/ltp/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/static/blogpost.css">
+  
+  <!--Metadata--> 
+  <meta name="keywords" content="david skudra, computer science, math, waterloo, student, canada, riot, league of legends, lol, api, programming, guide, demo, 2.0, challenge">
+  <meta name="description" content="David Skudra's Personal Website">
+  
+  <!--Scripts-->
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  
+    ga('create', 'UA-66163034-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+  </head>
+  
+  <body>
+    <!--Nav Bar: Use for all tab pages-->
+    <div class="navigation">
+      <ul class="nav nav-pills">
+        <li><a href="/">home</a></li>
+        <li><a href="/blog">blog</a></li>
+        <li><a href="http://github.com/David4Danger">github</a></li>
+        <li><a href="/projects">projects</a></li>
+        <li><a href="/static/resume.pdf">resume</a></li>
+      </ul>
+    </div>
+    
+    <!--Static Information Until 2016-->
+    <div class="container">
+    <div class="row">
+      <div class="davpic">
+        <div class="col-md-3">
+          <a href="/"><img src="/static/davidface.png" alt=""></a>
+          <img src="/static/email.png" alt="No Email For Web Crawlers :D">
+        </div>
+      </div>
+      
+      <!--Full Blog Post-->
+      <div class="col-md-6">
+        <div class="fullpost">
+          <center>          
+          <div class="nav2">
+            <a href="/blog/Riot-API-Challenge-2.0-3" class="arrow-prev"><i class="fa fa-arrow-left"></i></a>
+            <ul class="pg-ind">
+              <li class="pg"><a href="/blog/Riot-API-Challenge-2.0">1</a></li>
+              <li class="pg"><a href="/blog/Riot-API-Challenge-2.0-2">2</a></li>
+              <li class="pg"><a href="/blog/Riot-API-Challenge-2.0-3">3</a></li>
+              <li class="pg active-pg">4</li>
+            </ul>
+            <a href="/blog/Riot-API-Challenge-2.0" class="arrow-next"><i class="fa fa-arrow-right"></i></a>
+          </div>
+          </center>
+          <h1 class="title">Riot API Challenge 2.0 - Project Documentation Part 4</h1>
+          <h3 class="date">Posted on 8/28/2015</h3>
+          <div class="post-body">
+            <p>As of today, I have completed the website that is displaying all the data I've gathered for my entry into the Riot API Challenge 2.0. You can find this wesbite at <a href="http://www.abilitypowerparity.com">www.abilitypowerparity.com</a>. In this post, I'll be giving a quick explanation on how to navigate the website and what to look for.</p>
+            <p>The first thing you'll notice is the homepage. Here you can choose any of the twelve AP items displayed to begin. Let's start with Rod of Ages, for an example. Once you click the Rod of Ages icon, you're taken to the webpage that hosts all the information on Rod of Ages. On the leftmost tab, there are two small columns that display the build path of the item, and all the stats provided that changed. For example, under the patch 5.11 column you'll see a different price for Blasting Wand, a different amount of additional gold needed to finish Rod of Ages, and four different statistical changes made to the item itself. Under these changes at the bottom lies a single column which details all the stats of the item that remained the same after it was updated. In some cases the stats don't change it all, in others the stats are the <i>only</i> thing that changed.</p>
+            <p>This method of display makes comparing the item before and after it was updated incredibly easy, providing a great base for understanding the middle column.</p>
+            <p>The middle column describes the results of the changes made to each item - here you'll find winrates, popularity, and gamelength information when you first load up the page. This is a good reference point for each item, creating an idea of how the changes affected the item in different aspects. This data isn't the only thing that is displayed in the second column, which in turn leads to the rightmost column.</p>
+            <p>What you'll see on the right is an array of buttons, each proposing a different set of information. Clicking one of the buttons will hide the base dataset in the middle column, and display a different one according to which button is selected. For example, clicking the "Anivia Building Rod of Ages" button will display some information that is unique to the item and champion.</p>
+            <p>One button that you'll see on every page in the rightmost column is the "Item Summary" button. Selecting it will display some information that helps paint a general picture of how these changes affected each item, and the implications of these changes. This is the quickest way to get a good idea of what happened to each item.</p>
+            <p>The last thing to cover here as that at the top of each page, you'll find twelve different icons to interact with. The first eleven on each page will take you to the pages of each respective AP item (other than the one you're currently on). The rightmost icon will bring you back to the homepage as well.</p>
+            <p>One thing you might notice while exploring the website is that some of the pages have more buttons to choose from on the rightmost tab than other pages. For the most part, this is proportional to the severity of the changes for each item, most importantly it's popularity. Luden's Echo had the most tabs because of how popular it was and how large the changes made to it were.</p>
+            <br>
+            <p>All in all, this website has the goal of getting the information I acquired to the reader as clear as possible. Each page starts by detailing what was changed, then how it affected basic stats like winrate, popularity, and game length, then finishing with some extra information to help expand knowledge on the topic once a solid foundation has been created. The intention of the provided layout is to almost read like a book, starting with the leftmost item, and then reading the information on each page like the page of a book; left to right. Of course a lot more people (as shown by popularity) care about Luden's Echo, compared to something like Nashor's Tooth, so there might be some skipping of "pages".</p>
+            <p>You can find a full set of documentation on how the data acquisition files I created worked and how I interfaced with them to get all my information at <a href="http://github.com/David4Danger/Ability-Power-Parity---Riot-API-Challenge-2.0">my github page</a> for the API Challenge entry. What you'll find there will be much more technical.</p>
+            <p>Thanks for reading my progress logs as I created my project for the Riot API Challenge 2.0, and I hope you'll explore my webpage further to see more!</p>
+            
+          </div>
+          
+          <!--Bottom nav bar for pages of article-->
+          <center>          
+          <div class="nav2">
+            <a href="/blog/Riot-API-Challenge-2.0-3" class="arrow-prev"><i class="fa fa-arrow-left"></i></a>
+            <ul class="pg-ind">
+              <li class="pg"><a href="/blog/Riot-API-Challenge-2.0">1</a></li>
+              <li class="pg"><a href="/blog/Riot-API-Challenge-2.0-2">2</a></li>
+              <li class="pg"><a href="/blog/Riot-API-Challenge-2.0-3">3</a></li>
+              <li class="pg active-pg">4</li>
+            </ul>
+            <a href="/blog/Riot-API-Challenge-2.0" class="arrow-next"><i class="fa fa-arrow-right"></i></a>
+          </div>
+          </center>
+          
+          <div class="post-footer">
+            <!--Disqus comment script-->
+            <div id="disqus_thread"></div>
+            <script type="text/javascript">
+              /* * * CONFIGURATION VARIABLES * * */
+              var disqus_shortname = 'riotapichallenge20';
+    
+              /* * * DON'T EDIT BELOW THIS LINE * * */
+              (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+              })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+          </div>
+        </div>
+      </div>
+      <div class="watlogo">
+        <div class="col-md-3">
+          <a href="https://cs.uwaterloo.ca"><img src="/static/watlogo.png" alt=""></a>
+        </div>
+      </div>
+    </div>
+    </div>     
+  </body>
+</html>
