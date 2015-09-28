@@ -1,0 +1,103 @@
+<html>
+<head>
+  <title>Comment Generator</title>
+  <style>
+    body {
+      font-family: Calibri,"Trebuchet MS",verdana,sans-serif;
+    }
+
+    .headline {
+      font-size: 11px;
+      line-height: 19px;
+      color: #888;
+    }
+
+    .footer {
+      color: #888;
+      padding: 0 1px;
+      line-height: 1.6em;
+    }
+
+    .username {
+      font-size: 13px;
+      font-weight: bold;
+      color: #416b80;
+      margin-right: 0.5em;
+      cursor: pointer;
+    }
+
+    .username:hover {
+      text-decoration: underline;
+    }
+
+    #reasonable {
+      font: small verdana,arial,helvetica,sans-serif;
+      margin: 5px 0;
+      max-width: 60em;
+    }
+  </style>
+</head>
+<body>
+<p><em>Click "More" for the next comment!</em></p>
+
+<div class="comment">
+  <div class="headline">
+    <span class="username">[-] David Skudra</span> f(n) points n minutes ago
+  </div>
+  <div id="reasonable"></div>
+  <div class="footer">
+    The collection grows!
+  </div>
+</div>
+
+<button id="more">More</button>
+
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+<script>
+
+var sentences = [
+"There's a site on the Internet, http://www.pointerpointer.com/ where a picture appears with a person pointing to the exact place your cursor is at.",
+"Meanwhile in python: Print(##########\n*15)",
+"You don't know pain unless you had to support IE6",
+"Full camo, no radar, maulers only on sandtrap.",
+"It was the damnest thing. I went to the Campus Open Day, and I handed the lady a $5 bill to pay for the parking, and she handed me back a 4-year degree.",
+"Woke up in Chicago, found out he got traded around mid-day, flew out to New York, met his teammates, came in as a pinch hitter in the eighth, walked off in the 14th. As they pointed out on the YES broadcast, he was getting mobbed by people and he probably didn't even know half of them.",
+"What did one lawyer say to the other lawyer? We are both lawyers.",
+"Why does a chicken coop only have 2 doors? Because if it had 4, it would be chicken sedan.",
+"Dictionary? Like the data structure, or the book-type thing?",
+"Denying the existence of pointers is like living in ancient Greece and denying the existence of Krackens and then being confused about why none of your ships ever make it to Morocco. Pointers are like Krackens—real, living things that must be dealt with so that polite society can exist",
+"URGENT: My thesis supervisor says my algorithm is O(n), how do I turn it O(ff)???!!!!!"
+];
+
+$(function() {
+  var active, addSentence, randomIndex;
+  active = [];
+
+  randomIndex = function() {
+    return Math.round(sentences.length * Math.random());
+  };
+
+  console.log(randomIndex());
+
+  addSentence = function() {
+    if (active.length < sentences.length) {
+      var random = randomIndex();
+
+      while ($.inArray(random, active) !== -1) {
+        random = randomIndex();
+      }
+
+      active.push(random);
+      $("#reasonable").append($("<p></p>").text(sentences[random]));
+    }
+  };
+
+  addSentence();
+
+  $("#more").on("click", function() {
+    addSentence();
+  });
+});
+</script>
+</body>
+</html>
