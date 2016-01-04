@@ -1,0 +1,81 @@
+<!DOCTYPE HTML>
+<html lang="en-CA">
+
+  <head>
+    <title> Pious Academic </title>
+    
+    <!--Texts-->
+    <link href='http://fonts.googleapis.com/css?family=Maven+Pro:400,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300italic' rel='stylesheet' type='text/css'>
+    <!--Styles-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://s3.amazonaws.com/codecademy-content/courses/ltp/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/static/blogpost.css">
+  
+  <!--Metadata--> 
+  <meta name="keywords" content="david skudra, computer science, math, waterloo, student, canada, halo, pious, academic, python, api, library">
+  <meta name="description" content="David Skudra's Personal Website">
+  
+  <!--Scripts-->
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  
+    ga('create', 'UA-66163034-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+  </head>
+  
+  <body>
+    <!--Nav Bar: Use for all tab pages-->
+    <div class="navigation">
+      <ul class="nav nav-pills">
+        <li><a href="/">home</a></li>
+        <li><a href="/blog">blog</a></li>
+        <li><a href="http://github.com/David4Danger">github</a></li>
+        <li><a href="/projects">projects</a></li>
+        <li><a href="/static/resume.pdf">resume</a></li>
+      </ul>
+    </div>
+    
+    <!--Static Information Until 2016-->
+    <div class="container">
+    <div class="row">
+      <div class="davpic">
+        <div class="col-md-3">
+          <a href="/"><img src="/static/davidface.png" alt=""></a>
+          <img src="/static/email.png" alt="No Email For Web Crawlers :D">
+        </div>
+      </div>
+      
+      <!--Full Blog Post-->
+      <div class="col-md-6">
+        <div class="fullpost">
+          <h1 class="title">16807 Pious Academic</h1>
+          <h3 class="date">Posted on 12/27/2015</h3>
+          <div class="post-body">
+          <p>I'm not quite sure how I actually found the time to make this library in the midst of my recent study term, but my motivation was the result of both a passion for Halo and how excited I was to be able to create a public library to share with others. After my recent experience using the Riot Games API, I decided to direct my talents at writing an unofficial python library to use the 343 Industries API created for Halo 5. The following is the result of my efforts!</p>
+          <p>You might be wondering about the name. I won't bore you with Halo related lore but my inspiration for the name for the name was from the forerunner monitors you see often in the series. That, and since 343 is 7 raised to the power of 3, I took it a step further and made it 7 raised to the power of 4.</p>
+          <p>Before I get into the code, <a href="https://github.com/David4Danger/16807-Pious-Academic">here</a> is a link to the public library I've been referencing. The first thing you might notice is that this library uses one of my favourite python libaries, <a href="http://docs.python-requests.org/en/latest/">requests</a>. This library makes processing HTTP requests much simpler in python. As abstraction goes, you need not understand the underlying processes behind requests but what its functions actually do.</p>
+          <p>The code itself is heavily commented so I'll just be highlighting a few key concepts that help make this library work. The first of which is that I included a class that handles rate limiting on a local scale. As with most public APIs, users have a limit that constrains how often you can make requests to the API. One thing I noticed in a few various other libraries made for this API is that local rate limiting wasn't considered. My ratelimit class protects both the user and the host of the API as you cannot exceed your specific rate limit when executing requests.</p>
+          <p>In the request class, there are 3 specific request functions that get reused for all the various get requests. Each is similar in nature but has slightly different URL formatting. The individual get requests are already equipped to use the correct request function but it is important to understand that they must use the proper request in order to format a proper endpoint.</p>
+          <p>Outside of the main file I also wrote <i>getmeta.py</i>, which is used to create a local copy of all the metadata currently available from the API. It creates a local JSON for each meta request to save the user the trouble of executing the same meta request multiple times. All you have to do it format the file pathing and run getmeta once in a while to make sure your metadata is up to date.
+          </p>
+          <p>As of now I've yet to personally create a project using my API but I have intentions to utilize in collaboration with <a href="http://www.bigteambattle.net/">bigteambattle.net</a> for an upcoming project, so stay posted for that!
+          </p>
+          
+          </div>
+        </div>
+      </div>
+      <div class="watlogo">
+        <div class="col-md-3">
+          <a href="https://cs.uwaterloo.ca"><img src="/static/watlogo.png" alt=""></a>
+        </div>
+      </div>
+    </div>
+    </div>     
+  </body>
+</html>
