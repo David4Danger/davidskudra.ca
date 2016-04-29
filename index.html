@@ -1,22 +1,15 @@
 <!DOCTYPE HTML>
-<html lang="en-CA">
+<html>
 
-  <head>
-    <title> David Skudra </title>
-    
-    <!--Texts-->
-    <link href='http://fonts.googleapis.com/css?family=Maven+Pro:400,700' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300italic' rel='stylesheet' type='text/css'>
-    <!--Styles-->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="http://s3.amazonaws.com/codecademy-content/courses/ltp/css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="/static/main.css">
-  
-    <!--Metadata--> 
-    <meta name="keywords" content="david skudra, computer science, math, waterloo, student, canada">
-    <meta name="description" content="David Skudra's Personal Website">
-  
+<head>
+	<title> David Skudra </title>
+    <meta charset="UTF-8">
+
     <!--Scripts-->
+    <script src="/libraries/p5.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/sketch.js"></script>
+    <script src="/js/script.js"></script>
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -25,64 +18,155 @@
     
       ga('create', 'UA-66163034-1', 'auto');
       ga('send', 'pageview');
-    
     </script>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script type="text/javascript" src="/js/main.js"></script>
-  </head>
-  
-  <body>
-    <!--Nav Bar: Use for all tab pages-->
-    <div class="navigation">
-      <ul class="nav nav-pills">
-        <li><a href="/">home</a></li>
-        <li><a href="/blog">blog</a></li>
-        <li><a href="http://github.com/David4Danger">github</a></li>
-        <li><a href="/projects">projects</a></li>
-        <li><a href="/static/resume.pdf">resume</a></li>
-      </ul>
-    </div>
-    
-    <!--Static Information Until 2016-->
-    <div class="container">
-    <div class="row">
-      <div class="davpic">
-        <div class="col-md-3">
-          <a href="/"><img src="/static/davidface.png" alt=""></a>
-        </div>
-      </div>
-      <div class="davdesc">
-        <div class="col-md-6">
-          <p>Hey! This website details all the various information and thoughts of David Skudra. I'm a 2nd year Mathematics student at the University of Waterloo who really enjoys programming! I'll be looking for related work for the Spring 2016 term. I hope you'll take the time to explore my website to see what I'm all about.<br><br><br>
-          I welcome any contact in regards to potential work opportunities, feedback, and any other related technical discussion.
-          </p>
-          <p>Check out my <a href="/blog">blog posts</a> to learn a bit more about me and my interests!</p>
-          <img src="/static/email.png" alt="No Email For Web Crawlers :D">
-        </div>
-      </div>
-      <div class="watlogo">
-        <div class="col-md-3">
-          <a href="https://cs.uwaterloo.ca"><img src="/static/watlogo.png" alt=""></a>
-        </div>
-      </div>
-    </div>
-    </div>
-    
-    <!--Non-Static Part of Page-->
-    <div class="interests">
-      <div class="container">
-        <div class="row2">
-          <div class="onmymind">
-            <div class="col-md-offset-0">
-              <h1>Thoughts Of The Month<h1>
-              <h6><i>Because Forbes has a much larger staff than davidskudra.ca</i></h6>
-              <h3 class="thought">"Web design is trying to make a glass slipper that fits both Cinderella and her ugly step sisters."</h3>
-              <h3 class="thought">The University of Toronto is having <a href="http://i.imgur.com/1Sy2UXU.jpg">CSS issues</a></h3>
-              <h3 class="thought">"My formatting <i>is</i> my syntax"</h3>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>      
-  </body>
+
+    <!--Texts-->
+    <link href='https://fonts.googleapis.com/css?family=Anonymous+Pro' rel='stylesheet' type='text/css'>
+
+    <!--Styles-->
+    <link href="main.css" rel="stylesheet" type="text/css">
+    <link href="libraries/bootstrap.min.css" rel="stylesheet" property="stylesheet"/>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" property="stylesheet"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <!--Metadata--> 
+    <meta name="keywords" content="david skudra, computer science, math, waterloo, student, canada, python, c++, software developer, software">
+    <meta name="description" content="David Skudra's Personal Website">
+</head>
+
+<body>
+	<div id="outer">
+		<div id="content" class="not-visible">
+			<div class="page">
+				<div class="container">
+					<div id="landing">
+						<div class="row">
+							<div class="col-md-3">
+							</div>
+							<div class="col-md-6">
+								<center><div class="icons">
+									<a href="https://www.linkedin.com/in/davidskudra" class="Llink">
+										<span class="fa-stack fa-3x">
+						 					<i class="fa fa-circle fa-stack-2x icon-background faH"></i>
+						  					<i class="fa fa-linkedin fa-stack-1x faH"></i>
+										</span>
+									</a>
+									<a href="/resume" class="Rlink">
+										<span class="fa-stack fa-3x">
+											<i class="fa fa-circle fa-stack-2x icon-background faH"></i>
+											<i class="fa fa-file-pdf-o fa-stack-1x faH"></i>
+										</span>
+									</a>
+									<a href="https://github.com/David4Danger" class="Glink">
+										<span class="fa-stack fa-3x">
+											<i class="fa fa-circle fa-stack-2x icon-background faH"></i>
+											<i class="fa fa-github fa-stack-1x faH"></i>
+										</span>
+									</a>
+									<a href="https://twitter.com/davidfromca" class="Tlink">
+										<span class="fa-stack fa-3x">
+											<i class="fa fa-circle fa-stack-2x icon-background faH"></i>
+											<i class="fa fa-twitter fa-stack-1x faH"></i>
+										</span>
+									</a>
+								</div></center>
+							</div>
+							<div class="col-md-3">
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-2">
+							</div>
+							<div class="col-md-8">
+								<center><h1>Hey! My name is David Skudra.</h1><br>
+								<h3>I'm a builder. I've always had a passion for piecing things together, from a Lego model to my latest programming works. You could say that I'm in the business of <asd class="special">connecting the dots.</asd></h3>
+								<h3>I'm a University of Waterloo student. Studying Computer Science is a lot more than just learning to program, it's learning how to <asd class="special">solve problems.</asd> Don't just celebrate the existance of code, but the solutions it creates.</h3>
+								<br><h5 class="button" id="first">WHAT I DO</h5></center>
+							</div>
+							<div class="col-md-2">
+							</div>
+						</div>
+					</div>
+					<div id="moreinfo">
+						<div class="row">
+						<div class="col-md-3">
+						</div>
+						<div class="col-md-6">
+							<center><div class="icons">
+								<a href="https://www.linkedin.com/in/davidskudra" class="Llink">
+									<span class="fa-stack fa-3x">
+					 					<i class="fa fa-circle fa-stack-2x icon-background faH"></i>
+					  					<i class="fa fa-linkedin fa-stack-1x faH"></i>
+									</span>
+								</a>
+								<a href="/resume" class="Rlink">
+									<span class="fa-stack fa-3x">
+										<i class="fa fa-circle fa-stack-2x icon-background faH"></i>
+										<i class="fa fa-file-pdf-o fa-stack-1x faH"></i>
+									</span>
+								</a>
+								<a href="https://github.com/David4Danger" class="Glink">
+									<span class="fa-stack fa-3x">
+										<i class="fa fa-circle fa-stack-2x icon-background faH"></i>
+										<i class="fa fa-github fa-stack-1x faH"></i>
+									</span>
+								</a>
+								<a href="https://twitter.com/davidfromca" class="Tlink">
+									<span class="fa-stack fa-3x">
+										<i class="fa fa-circle fa-stack-2x icon-background faH"></i>
+										<i class="fa fa-twitter fa-stack-1x faH"></i>
+									</span>
+								</a>
+							</div></center>
+						</div>
+						<div class="col-md-3">
+						</div>
+					</div>
+						<div class="row">
+							<div class="col-md-2">
+							</div>
+							<div class="col-md-4">
+								<center><h1>Developing</h1>
+								<i class="fa fa-code fa-2x"></i>
+								<h4>I believe that <asd class="special">developing is the same as building,</asd> so naturally I love to develop things in some of my favourite languages, like C++ and Python.</h4></center>
+							</div>
+							<div class="col-md-4">
+								<center><h1>Designing</h1>
+								<i class="fa fa-paint-brush fa-2x"></i>
+								<h4><asd class="special">We are visual beings.</asd> We process information based on what we see, so I make sure to appeal to that, through a comment in my code or a display process for a project.</h4></center>
+							</div>
+							<div class="col-md-2">
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-2">
+							</div>
+							<div class="col-md-4">
+								<center><h1>Open Source</h1>
+								<i class="fa fa-lightbulb-o fa-2x"></i>
+								<h4>I love working with open source projects, whether it's my own or someone else's. Open source is important to me because <asd class="special">collaboration brings about the best in our code.</asd></h4></center>
+							</div>
+							<div class="col-md-4">
+								<center><h1>Stay Hungry</h1>
+								<i class="fa fa-flag-checkered fa-2x"></i>
+								<h4>I'm not satisfied with par for the course. It doesn't matter if I'm writing a new class or playing a game of baseball, <asd class="special">I strive for excellence</asd> in everything I do.</h4></center>
+							</div>
+							<div class="col-md-2">
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-2">
+							</div>
+							<div class="col-md-8">
+								<center><br><h5 class="button" id="second">WHO I AM</h5></center>
+							</div>
+							<div class="col-md-2">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
 </html>
